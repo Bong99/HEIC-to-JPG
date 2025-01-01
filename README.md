@@ -6,4 +6,6 @@ You can drag and drop the HECI files from File Explorer then convert the files i
 
 This program does use python with library pillow_heif for image conversion, then use tkinter as UI part. It also usetkinterDnD for the drag and drop function.
 
-It references the code from https://github.com/michaelpig0912/heic2jpg/releases.
+
+Enjoy.
+
