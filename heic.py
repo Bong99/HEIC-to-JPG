@@ -1,5 +1,4 @@
-﻿
-import os
+﻿import os
 import sys
 from PIL import Image
 from pillow_heif import register_heif_opener
@@ -10,7 +9,7 @@ import tkinterDnD  # Importing the tkinterDnD module
 
 
 register_heif_opener()
-a = 0
+a = 0 
 
 # Convert the heic file into jpg
 def convert_to_jpg(input_file, output_file):
@@ -46,6 +45,11 @@ def convertnow():
         current_index = current_index+1
         
         convert_to_jpg(input_file, output_file)
+
+        messagebox.showinfo("Convert Completed", "Convert Completed") 
+
+
+
 
 # You have to use the tkinterDnD.Tk object for super easy initialization,
 # and to be able to use the main window as a dnd widget
