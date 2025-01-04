@@ -5,6 +5,7 @@ from PIL import Image
 from pillow_heif import register_heif_opener
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox 
 import tkinterDnD  # Importing the tkinterDnD module
 
 
@@ -49,7 +50,7 @@ def convertnow():
 # You have to use the tkinterDnD.Tk object for super easy initialization,
 # and to be able to use the main window as a dnd widget
 root = tkinterDnD.Tk()
-root.title("HEIC to JPG")
+root.title("HEIC to JPG converter")
 
 stringvar = tk.StringVar()
 stringvar.set('Drag file (HEIC file only, not support folder) to here to convert +')
@@ -86,6 +87,17 @@ def drag_command(event):
     return (tkinterDnD.COPY, "DND_Text", "Some nice dropped text!")
 
 
+
+about_label_text = ('HEIC to JPG converter v1.0\nAuthor: Paul Chow\n'
+    'Email: bong99@gmail.com\n'
+    'License: MIT License\n\n'
+    'Github: https://github.com/Bong99/HEIC-to-JPG'    
+    )
+
+
+def about():
+    messagebox.showinfo("About", about_label_text) 
+
 # UI Layout section start
 
 # With DnD hook you just pass the command to the proper argument,
@@ -93,14 +105,11 @@ def drag_command(event):
 # NOTE: You need a ttk widget to use these arguments
 
 
-about_label_text = ('Author: Paul Chow\n'
-    'Email: bong99@gmail.com\n'
-    'License: MIT License\n\n'
+
     'Drag the HEIC files to below area, then press "Convert" button to start convert.\n'
     'The converted file will be saved in the same folder'
-    )
 
-label_about = tk.Label(root, text=about_label_text)
+label_about = tk.Label(root, text='\nDrag the HEIC files to below area, then press "Convert" button to start convert.\nThe converted file will be saved in the same folder')
 label_about.pack()   
 
 label_2 = ttk.Label(root, ondrop=drop, ondragstart=drag_command, textvar=stringvar, padding=50, relief="solid")
@@ -117,5 +126,8 @@ button2.pack(padx = 3, pady = 3)
 
 bar = ttk.Progressbar(root)
 bar.pack(pady=20)
+
+button_about = tk.Button(text = "About...", command = about)
+button_about.pack(padx = 3, pady = 3)
 
 root.mainloop()
